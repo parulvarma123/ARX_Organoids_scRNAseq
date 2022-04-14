@@ -8,7 +8,7 @@ library(lme4)
 
 hCS30D <- readRDS(file = "~/hCS30DIVCelltype.rds")
 
-#Calculating cell type progression 
+#Calculating cell type regression 
 #OrgIdent contains Ctrl vs Mut information
 #orig.ident contains the identity of the organoids C1, C2, C3, M1, M2, M3
 
