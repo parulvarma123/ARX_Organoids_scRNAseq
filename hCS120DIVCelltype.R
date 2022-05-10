@@ -71,7 +71,7 @@ dev.off()
 #UMAP for Control vs ARX Mutant
 hCS120DUMAPCtrlvsARX <- DimPlot(hCS120D, reduction = "umap", 
                                 cols = c("Radial Glia" = "hotpink1",
-                                         "Interneuron Progenitor" = "chartreuse"
+                                         "Interneuron Progenitor" = "chartreuse",
                                          "Cycling Progenitors" = "deepskyblue",
                                          "oRG"="navyblue", 
                                          "Deep Layer Neurons" ="gold1",
