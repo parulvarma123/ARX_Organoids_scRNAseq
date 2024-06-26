@@ -12,20 +12,20 @@ markers = Signac::VeniceAllMarkers(hSS120D, only.pos = T)
 write.table(markers, file ="~/hSS120DIVClusterMarkers.txt", sep = "\t", quote=F, row.names =T)
             
 #Rename the clusters now after understanding the markers
-new.cluster.ids <- c("Unknown", 
-                     "Ventral Intermediate Progenitor", 
-                     "Radial Glial", 
-                     "Radial Glial", 
-                     "Radial Glial", 
-                     "Radial Glial",
-                     "Other",
-                     "Immature Interneurons", 
-                     "Other", 
-                     "SST Interneurons",
+new.cluster.ids <- c("Inhibitory Neurons", 
+                     "Inhibitory Neurons", 
+                     "Radial Glial Cells", 
+                     "Radial Glial Cells", 
+                     "Undefined", 
+                     "Radial Glial Cells",
+                     "Undefined",
+                     "Inhibitory Neurons", 
+                     "Undefined", 
+                     "Inhibitory Neurons",
                      "Cycling Progenitors", 
                      "Ventral Intermediate Progenitor", 
-                     "Other", 
-                     "Other")
+                     "Undefined", 
+                     "Oligodendrocyte Progenitor Cells")
 
 names(new.cluster.ids) <- levels(hSS120D)
 hSS120D <- RenameIdents(hSS120D, new.cluster.ids)
@@ -48,13 +48,12 @@ saveRDS(hSS120D, file = "~/hSS120DIVCelltype.rds")
 #Subset Control dataset first
 hSS120DCtrl <- subset(hSS120D, subset = OrgIdent == "Ctrl")
 hSS120DCtrlUMAP <- DimPlot(hSS120DCtrl, reduction = "umap",
-                           cols= c("Ventral Intermediate Progenitor" = "darkred", 
-                                   "Radial Glia" = "hotpink1",
+                           cols= c("Ventral Intermediate Progenitors" = "violetred4", 
+                                   "Radial Glial Cells" = "hotpink1",
                                    "Cycling Progenitors" = "deepskyblue", 
-                                   "Immature Interneurons"= "olivedrab3",
-                                   "Other" = "gray28",
-                                   "Unknown" = "gray", 
-                                   "SST Interneurons" = "darkgreen"))
+                                   "Inhibitory Neurons"= "olivedrab3",
+                                   "Undefined" = "light gray", 
+                                   "Oligodendrocyte Progenitor Cells" = "orange"))
             
 hSS120DCtrlUMAP
 #Save the file
@@ -63,26 +62,24 @@ dev.off()
 
 #UMAP for Control vs ARX Mutant
 hSS120D_UMAP_CtrlvsARX <- DimPlot(hSS120D, reduction = "umap",
-                                  cols= c("Ventral Intermediate Progenitor" = "darkred",
-                                          "Radial Glia" = "hotpink1",
-                                          "Cycling Progenitors" = "deepskyblue",
-                                          "Immature Interneurons"= "olivedrab3",
-                                          "Other" = "gray28",
-                                          "Unknown" = "gray", 
-                                          "SST Interneurons" = "darkgreen"), split.by = "OrgIdent")
+                                  cols= c("Ventral Intermediate Progenitors" = "violetred4", 
+                                   "Radial Glial Cells" = "hotpink1",
+                                   "Cycling Progenitors" = "deepskyblue", 
+                                   "Inhibitory Neurons"= "olivedrab3",
+                                   "Undefined" = "light gray", 
+                                   "Oligodendrocyte Progenitor Cells" = "orange"), split.by = "OrgIdent")
 hSS120D_UMAP_CtrlvsARX
 ggsave("~/hSS120DUMAPCtrlvsARX.jpeg", width = 9, height = 3, units = c("in"),  dpi = 300)
 dev.off()
 
 #UMAP EachLine
 hSS120D_UMAP_EachLine <- DimPlot(hSS120D, reduction = "umap",
-                                 cols= c("Ventral Intermediate Progenitor" = "darkred",
-                                         "Radial Glia" = "hotpink1",
-                                         "Cycling Progenitors" = "deepskyblue", 
-                                         "Immature Interneurons"= "olivedrab3",
-                                         "Other" = "gray28",
-                                         "Unknown" = "gray", 
-                                         "SST Interneurons" = "darkgreen"), split.by = "orig.ident")
+                                 cols= c("Ventral Intermediate Progenitors" = "violetred4", 
+                                   "Radial Glial Cells" = "hotpink1",
+                                   "Cycling Progenitors" = "deepskyblue", 
+                                   "Inhibitory Neurons"= "olivedrab3",
+                                   "Undefined" = "light gray", 
+                                   "Oligodendrocyte Progenitor Cells" = "orange"), split.by = "orig.ident")
 hSS120D_UMAP_EachLine
 ggsave("~/hSS120DUMAPEachLine.jpeg", width = 23, height = 4, units = c("in"),  dpi = 300)
 dev.off()
