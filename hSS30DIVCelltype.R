@@ -13,26 +13,26 @@ write.table(markers, file ="~/hSS30DIVClusterMarkers.txt", sep = "\t", quote=F, 
             
 #Rename the clusters now after understanding the markers
 new.cluster.ids <- c("Ventral Intermediate Progenitor", 
-                     "Radial Glia", "Cycling Progenitors", 
-                     "Ventral Intermediate Progenitor",
-                     "Ventral Intermediate Progenitor", 
-                     "Radial Glia", 
-                     "Immature Interneurons", 
-                     "Other", 
-                     "Unknown", 
-                     "Other",
-                     "Other",
-                     "Ventral Intermediate Progenitor", 
-                     "Other", 
-                     "Ventral Intermediate Progenitor", 
+                     "Radial Glial Cells", "Cycling Progenitors", 
+                     "Inhibitory Neurons",
+                     "Inhibitory Neurons", 
+                     "Radial Glial Cells", 
+                     "Radial Glial Cells", 
+                     "Undefined", 
+                     "Undefined", 
+                     "Radial Glial Cells",
+                     "Cajal-Retzius Neurons",
+                     "Radial Glial Cells", 
+                     "Undefined", 
+                     "Inhibitory Neurons", 
                      "Cycling Progenitors", 
-                     "Ventral Intermediate Progenitor", 
-                     "Immature Interneurons", 
-                     "Other", 
-                     "Other", 
-                     "Other",
-                     "Unknown", 
-                     "Astrocytes",
+                     "Radial Glial Cells", 
+                     "Undefined", 
+                     "Microglia", 
+                     "Undefined", 
+                     "Radial Glial Cells",
+                     "Undefined", 
+                     "Undefined",
                      "Cycling Progenitors")
 
 names(new.cluster.ids) <- levels(hSS30D)
@@ -54,13 +54,13 @@ saveRDS(hSS30D, file = "~/hSS30DCelltype.rds")
 #Subset Control dataset first
 hSS30DCtrl <- subset(hSS30D, subset = OrgIdent == "Ctrl")
 hSS30D_UMAP_Ctrl <- DimPlot(hSS30DCtrl, reduction = "umap",
-                            cols = c("Ventral Intermediate Progenitor" = "darkred", 
-                                     "Radial Glia" = "hotpink",
+                            cols = c("Ventral Intermediate Progenitors" = "violetred4", 
+                                     "Radial Glial Cells" = "hotpink1",
                                      "Cycling Progenitors" = "deepskyblue", 
-                                     "Immature Interneurons"= "olivedrab3",
-                                     "Other" = "gray28",
-                                     "Unknown" = "gray", 
-                                     "Astrocytes" = "purple3"))
+                                     "Undefined"= "light gray",
+                                     "Inhibitory Neurons" = "olivedrab3",
+                                     "Cajal-Retzius Neurons" = "orangered",
+                                     "Microglia" = "purple3"))
 hSS30D_UMAP_Ctrl
             
 #Save the file
@@ -69,13 +69,13 @@ dev.off()
 
 #UMAP for Control vs ARX Mutant
 hSS30D_UMAP_CtrlvsARX <- DimPlot(hSS30D, reduction = "umap",
-                                 cols= c("Ventral Intermediate Progenitor" = "darkred", 
-                                         "Radial Glia" = "hotpink",
-                                         "Cycling Progenitors" = "deepskyblue", 
-                                         "Immature Interneurons"= "olivedrab3",
-                                         "Other" = "gray28",
-                                         "Unknown" = "gray", 
-                                         "Astrocytes" = "purple3"), split.by = "OrgIdent")
+                                 cols= c("Ventral Intermediate Progenitors" = "violetred4", 
+                                     "Radial Glial Cells" = "hotpink1",
+                                     "Cycling Progenitors" = "deepskyblue", 
+                                     "Undefined"= "light gray",
+                                     "Inhibitory Neurons" = "olivedrab3",
+                                     "Cajal-Retzius Neurons" = "orangered",
+                                     "Microglia" = "purple3"), split.by = "OrgIdent")
 hSS30D_UMAP_CtrlvsARX
 
 #Save the file
@@ -84,13 +84,13 @@ dev.off()
         
 #UMAP for hSS30D Control vs ARX each organoid (C1, C2, C3, M1, M2, M3)
 hSS30DControlvsARXUMAP_EachLine <- DimPlot(hSS30D, reduction = "umap",
-                                           cols= c("Ventral Intermediate Progenitor" = "darkred", 
-                                                   "Radial Glia" = "hotpink",
-                                                   "Cycling Progenitors" = "deepskyblue", 
-                                                   "Immature Interneurons"= "olivedrab3",
-                                                   "Other" = "gray28",
-                                                   "Unknown" = "gray", 
-                                                   "Astrocytes" = "purple3"), split.by = “orig.ident”)
+                                           cols= c("Ventral Intermediate Progenitors" = "violetred4", 
+                                     "Radial Glial Cells" = "hotpink1",
+                                     "Cycling Progenitors" = "deepskyblue", 
+                                     "Undefined"= "light gray",
+                                     "Inhibitory Neurons" = "olivedrab3",
+                                     "Cajal-Retzius Neurons" = "orangered",
+                                     "Microglia" = "purple3"), split.by = “orig.ident”)
         
 hSS30DControlvsARXUMAP_EachLine
         
