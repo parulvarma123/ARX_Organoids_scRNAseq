@@ -13,24 +13,24 @@ write.table(markers, file ="~/hCS120DIVClusterMarkers.txt", sep = "\t", quote=F,
             
 #Rename the clusters now after understanding the markers
 new.cluster.ids <- c("Deep Layer Neurons", 
-                     "oRG", 
-                     "oRG", 
-                     "Upper Layer Neurons", 
-                     "Other", 
-                     "Deep Layer Neurons", 
-                     "Interneuron Progenitor", 
-                     "oRG", 
-                     "Other", 
+                     "Outer Radial Glia", 
+                     "Outer Radial Glia", 
+                     "Undefined", 
+                     "Undefined", 
+                     "Undefined", 
+                     "Inhibitory Neurons", 
+                     "Outer Radial Glia", 
+                     "Undefined", 
                      "Cycling Progenitors", 
-                     "Other", 
+                     "Upper Layer Neurons", 
                      "Intermediate Progenitors",
+                     "Undefined", 
+                     "Inhibitory Neurons",
+                     "Inhibitory Neurons", 
                      "Radial Glia", 
-                     "Interneurons",
-                     "Interneurons", 
-                     "Other", 
-                     "Other", 
-                     "Other", 
-                     "Other")
+                     "Undefined", 
+                     "Inhibitory Neurons", 
+                     "Undefined")
 
 names(new.cluster.ids) <- levels(hCS120D)
 hCS120D <- RenameIdents(hCS120D, new.cluster.ids)
@@ -54,14 +54,13 @@ saveRDS(hCS120D, file = '~/hCS120DCelltype.rds')
 hCS120Dctrl <- subset(hCS120D, subset = OrgIdent == "Ctrl")
 hCS120DUMAPCtrl <- DimPlot(hCS120Dctrl, reduction = "umap", 
                            cols = c("Radial Glia" = "hotpink1", 
-                                    "Interneuron Progenitor" = "chartreuse", 
                                     "Cycling Progenitors" = "deepskyblue",
-                                    "oRG"="navyblue", 
+                                    "Outer Radial Glia"="navyblue", 
                                     "Deep Layer Neurons" ="gold1",
-                                    "Interneurons" = "green4",
+                                    "Inhibitory Neurons" = "olivedrab3",
                                     "Upper Layer Neurons"= "orangered",
                                     "Intermediate Progenitors" = "violetred4",
-                                    "Other"="gray"))
+                                    "Undefined"="light gray"))
 hCS120DUMAPCtrl
             
 #Save the file 
@@ -70,15 +69,14 @@ dev.off()
 
 #UMAP for Control vs ARX Mutant
 hCS120DUMAPCtrlvsARX <- DimPlot(hCS120D, reduction = "umap", 
-                                cols = c("Radial Glia" = "hotpink1",
-                                         "Interneuron Progenitor" = "chartreuse",
-                                         "Cycling Progenitors" = "deepskyblue",
-                                         "oRG"="navyblue", 
-                                         "Deep Layer Neurons" ="gold1",
-                                         "Interneurons" = "green4",
-                                         "Upper Layer Neurons"= "orangered",
-                                         "Intermediate Progenitors" = "violetred4",
-                                         "Other"="gray"), split.by = "OrgIdent")
+                                cols = c("Radial Glia" = "hotpink1", 
+                                    "Cycling Progenitors" = "deepskyblue",
+                                    "Outer Radial Glia"="navyblue", 
+                                    "Deep Layer Neurons" ="gold1",
+                                    "Inhibitory Neurons" = "olivedrab3",
+                                    "Upper Layer Neurons"= "orangered",
+                                    "Intermediate Progenitors" = "violetred4",
+                                    "Undefined"="light gray"), split.by = "OrgIdent")
 hCS120DUMAPCtrlvsARX
 
 #Save the file 
@@ -88,14 +86,13 @@ dev.off()
 #UMAP for hCS120D Control vs ARX each organoid(C1, C2, C3, M1, M2, M3)
 hCS120DUMAPEachLine <- DimPlot(hCS120D, reduction = "umap", 
                                cols = c("Radial Glia" = "hotpink1", 
-                                        "Interneuron Progenitor" = "chartreuse", 
-                                        "Cycling Progenitors" = "deepskyblue",
-                                        "oRG"="navyblue",
-                                        "Deep Layer Neurons" ="gold1",
-                                        "Interneurons" = "green4",
-                                        "Upper Layer Neurons"= "orangered",
-                                        "Intermediate Progenitors" = "violetred4",
-                                        "Other"="gray"), split.by = "orig.ident")
+                                    "Cycling Progenitors" = "deepskyblue",
+                                    "Outer Radial Glia"="navyblue", 
+                                    "Deep Layer Neurons" ="gold1",
+                                    "Inhibitory Neurons" = "olivedrab3",
+                                    "Upper Layer Neurons"= "orangered",
+                                    "Intermediate Progenitors" = "violetred4",
+                                    "Undefined"="light gray"), split.by = "orig.ident")
 
 hCS120DUMAPEachLine
         
