@@ -13,25 +13,25 @@ write.table(markers, file ='~/hCS30DIVClusterMarkers.txt', sep = "\t", quote=F, 
             
 #Rename the clusters now after understanding the markers
 new.cluster.ids <- c("Radial Glia", 
-                     "Immature Interneurons", 
+                     "Inhibitory Neurons", 
                      "Cycling Progenitors", 
-                     "Radial Glia", 
+                     "Undefined", 
                      "Radial Glia", 
                      "Cycling Progenitors",
-                     "Other", 
+                     "Undefined", 
                      "Deep Layer Neurons", 
-                     "Early Cajal-Retzius Neurons",
-                     "Radial Glia", "Other",
+                     "Cajal-Retzius Neurons",
+                     "Undefined", "Inhibitory Neurons",
                      "Intermediate Progenitors",
-                     "Radial Glia", 
-                     "Other",
-                     "Other", 
-                     "Astrocytes", 
-                     "Other", 
+                     "Undefined, 
+                     "Undefined",
+                     "Undefined", 
+                     "Undefined", 
+                     "Inhibitory Neurons", 
                      "Cycling Progenitors",
                      "Cycling Progenitors",
                      "Cycling Progenitors",
-                     "Other")
+                     "Undefined")
             
 names(new.cluster.ids) <- levels(hCS30D)
             
@@ -55,13 +55,12 @@ saveRDS(hCS30D, file = '~/hCS30DIVCelltype.rds')
 hCS30DCtrl <- subset(hCS30D, subset = OrgIdent == "Ctrl")
 hCS30DUMAPCtrl <- DimPlot(hCS30Dctrl, reduction = "umap", 
                           cols = c("Radial Glia" = "hotpink1", 
-                                   "Immature Interneurons" = "olivedrab3", 
+                                   "Inhibitory Neurons" = "olivedrab3", 
                                    "Cycling Progenitors" = "deepskyblue", 
                                    "Deep Layer Neurons" ="gold1",
-                                   "Early Cajal-Retzius Neurons" = "orangered",
+                                   "Cajal-Retzius Neurons" = "orangered",
                                    "Intermediate Progenitors" = "violetred4",
-                                   "Astrocytes" = "purple3",
-                                   "Other" = "gray"))
+                                   "Undefined" = "light gray"))
 hCS30DUMAPCtrl
             
 #Save the file
@@ -71,13 +70,12 @@ dev.off()
 #UMAP for Control vs ARX Mutant
 hCS30CtrlvsARXUMAP <- DimPlot(hCS30D, reduction = "umap", 
                               cols = c("Radial Glia" = "hotpink1", 
-                                       "Immature Interneurons" = "olivedrab3", 
-                                       "Cycling Progenitors" = "deepskyblue", 
-                                       "Deep Layer Neurons" ="gold1",
-                                       "Early Cajal-Retzius Neurons" = "orangered",
-                                       "Intermediate Progenitors" = "violetred4",
-                                       "Astrocytes" = "purple3",
-                                       "Other" = "gray"), split.by = "OrgIdent")
+                                   "Inhibitory Neurons" = "olivedrab3", 
+                                   "Cycling Progenitors" = "deepskyblue", 
+                                   "Deep Layer Neurons" ="gold1",
+                                   "Cajal-Retzius Neurons" = "orangered",
+                                   "Intermediate Progenitors" = "violetred4",
+                                   "Undefined" = "light gray"), split.by = "OrgIdent")
 
 hCS30CtrlvsARXUMAP
 
@@ -88,13 +86,12 @@ dev.off()
 #hCS30D Control vs ARX UMAP for each organoid (C1, C2, C3, M1, M2, M3)
 hCS30CtrlvsARXUMAPeachline <- DimPlot(hCS30D, reduction = "umap", 
                                       cols = c("Radial Glia" = "hotpink1", 
-                                               "Immature Interneurons" = "olivedrab3", 
-                                               "Cycling Progenitors" = "deepskyblue", 
-                                               "Deep Layer Neurons" ="gold1",
-                                               "Early Cajal-Retzius Neurons" = "orangered",
-                                               "Intermediate Progenitors" = "violetred4",
-                                               "Astrocytes" = "purple3",
-                                               "Other" = "gray"), split.by = "orig.ident")
+                                   "Inhibitory Neurons" = "olivedrab3", 
+                                   "Cycling Progenitors" = "deepskyblue", 
+                                   "Deep Layer Neurons" ="gold1",
+                                   "Cajal-Retzius Neurons" = "orangered",
+                                   "Intermediate Progenitors" = "violetred4",
+                                   "Undefined" = "light gray"), split.by = "orig.ident")
         
 hCS30CtrlvsARXUMAPeachline
         
