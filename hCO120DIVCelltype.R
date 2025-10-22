@@ -58,7 +58,7 @@ hCS120DUMAPCtrl <- DimPlot(hCS120Dctrl, reduction = "umap",
                                     "Outer Radial Glia"="navyblue", 
                                     "Deep Layer Neurons" ="gold1",
                                     "Inhibitory Neurons" = "olivedrab3",
-                                    "Upper Layer Neurons"= "orangered",
+                                    "Upper Layer Neurons"= "darkorchid1",
                                     "Intermediate Progenitors" = "violetred4",
                                     "Undefined"="light gray"))
 hCS120DUMAPCtrl
@@ -74,7 +74,7 @@ hCS120DUMAPCtrlvsARX <- DimPlot(hCS120D, reduction = "umap",
                                     "Outer Radial Glia"="navyblue", 
                                     "Deep Layer Neurons" ="gold1",
                                     "Inhibitory Neurons" = "olivedrab3",
-                                    "Upper Layer Neurons"= "orangered",
+                                    "Upper Layer Neurons"= "darkorchid1",
                                     "Intermediate Progenitors" = "violetred4",
                                     "Undefined"="light gray"), split.by = "OrgIdent")
 hCS120DUMAPCtrlvsARX
@@ -90,7 +90,7 @@ hCS120DUMAPEachLine <- DimPlot(hCS120D, reduction = "umap",
                                     "Outer Radial Glia"="navyblue", 
                                     "Deep Layer Neurons" ="gold1",
                                     "Inhibitory Neurons" = "olivedrab3",
-                                    "Upper Layer Neurons"= "orangered",
+                                    "Upper Layer Neurons"= "darkorchid1",
                                     "Intermediate Progenitors" = "violetred4",
                                     "Undefined"="light gray"), split.by = "orig.ident")
 
