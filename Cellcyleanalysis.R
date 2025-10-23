@@ -11,6 +11,7 @@ hCS30D <- readRDS(file = "~/hCS30DIVCelltype10_25_2023.rds")
 hCS30D <- UpdateSeuratObject(hCS30D)
 DimPlot(hCS30D, reduction = "umap")
 
+
 #Subset for Cycling Progenitors
 CP <- subset(hCS30D, idents = c("Cycling Progenitors"))
 CP <- NormalizeData(CP)
